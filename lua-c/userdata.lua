@@ -19,12 +19,16 @@ log1:echo("hello markb")
 log1:echo("hello markc")
 log1:echo("hello markd")
 log1:echo("hello marke")
+
+print("\n")
 log1:history()
 log1:echo("hello markf")
+
+print("\n")
 log1:history()
 
-local log2 = ud.new()
+-- local log2 = ud.new()
 
-log2.echo(log2, "hello king1")
-log2:echo("hello king2")
-log2:history()
+-- log2.echo(log2, "hello king1")
+-- log2:echo("hello king2")
+-- log2:history()
