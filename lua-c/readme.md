@@ -30,5 +30,8 @@ lua_settop明显是 liblua库里面的函数，问题出在 basic_reg 这个可�
 - -Wl,-E：这是一个传递给链接器的选项。
 - -Wl是一个传递选项给链接器的通用前缀，而-E是传递给链接器的具体选项。
 - -E通常与--export-dynamic选项相对应，这意味着它告诉链接器将所有的全局符号都导出到动态符号表中。这样做可以让动态链接的共享库能够引用主程序中的符号。
+
+需要注意的是， basic_reg.lua 里面调用了两个c模块， userdata_reg 和 closure_reg ，**而这两个模块，都可以访问到 basic_reg.c 里面创建的注册表**，这就是注册表的作用
+
 -----
 lua-c/basic_reg_lud.c 这里是研究 lightuserdata 的使用方式
