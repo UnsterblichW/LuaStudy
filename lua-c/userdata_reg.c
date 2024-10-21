@@ -95,7 +95,7 @@ static const luaL_Reg l[] = {
     {NULL, NULL},
 };
 
-int luaopen_ud(lua_State *L) {
+int luaopen_userdata_reg(lua_State *L) {
     luaL_newlib(L, l);
     return 1;
 }

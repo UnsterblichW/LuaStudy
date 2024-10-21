@@ -2,16 +2,16 @@
 
 package.cpath = package.cpath .. ";./?.so;"
 
-local uv = require "uv"
+local userdata_reg = require "userdata_reg"
 
-local ud = require "ud"
+local closure_reg = require "closure_reg"
 
-local log1 = ud.new()
-local log2 = ud.new()
+local log1 = userdata_reg.new()
+local log2 = userdata_reg.new()
 
 function Init(...)
     print("init called", ...)
-    uv.echo("hello mark")
+    closure_reg.echo("hello mark")
 end
 
 function Loop(...)
