@@ -43,7 +43,7 @@ static int lhistory (lua_State *L) {
     if (q->count <= 10) {
         for (int i=q->count; i >= 1; i--) {
             lua_geti(L, -1, i);
-            printf("H:[cnt=%d,gcnt=%d] %s\n", i, gcnt, lua_tostring(L, -1));
+            printf("Histrory:[cnt=%d,gcnt=%d] %s\n", i, gcnt, lua_tostring(L, -1));
             lua_pop(L, 1);
         }
     } else {
@@ -51,7 +51,7 @@ static int lhistory (lua_State *L) {
             int cnt = q->count - i;
             int idx = (cnt-1) %10 + 1;
             lua_geti(L, -1, idx);
-            printf("H:[cnt=%d,gcnt=%d] %s\n", cnt, gcnt, lua_tostring(L, -1));
+            printf("Histrory:[cnt=%d,gcnt=%d] %s\n", cnt, gcnt, lua_tostring(L, -1));
             lua_pop(L, 1);
         }
     }

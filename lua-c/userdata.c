@@ -75,6 +75,7 @@ static int lhistory (lua_State *L) {
     return 0;
 }
 
+// 这个gc函数里面什么都没做，只是为了证明 userdata 的生命周期是由 lua 自动管理的，会自动调用gc来清理
 static int lgc(lua_State *L) {
     struct log *q = (struct log *)luaL_checkudata(L, 1, "mk.userdata.log");
     printf("userdata[%p] has gc\n", q);
@@ -83,6 +84,9 @@ static int lgc(lua_State *L) {
 
 static int lnew (lua_State *L) {
     // 此时，虚拟栈中只有一个元素，就是这个创建出来的 userdata ，后面会往栈里面进进出出一系列元素，但是这个userdata一直都在栈里面
+    // ！！相比于 lightuserdata 来说， userdata 的内存空间会由lua来管理。！！
+    // 下面给这个新建的 userdata 加了一个 __gc 元方法，
+    // 在Lua的打印结果里面可以看到 Lua 会自动调用 userdata 的 __gc
     struct log *q = (struct log *)lua_newuserdata(L, sizeof(struct log));
     q->count = 0;
 
